@@ -1,0 +1,8 @@
+.main-container{
+  display: grid;
+  grid-template: 150px 1fr / 1fr;
+}
+
+.topbar-container{
+  background: #CBF3F0;
+}
