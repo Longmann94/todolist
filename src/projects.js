@@ -4,7 +4,7 @@ class Project{
   }
 
   addTodo(todo){
-    projectArr.push(todo);
+    this.projectArr.push(todo);
   }
 
   removeTodo(todo){
@@ -12,7 +12,7 @@ class Project{
   }
 
   displayTodo(){
-    
+    console.log('todo for this project being displayed.');
   }
 }
 

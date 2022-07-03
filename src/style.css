@@ -1,3 +1,8 @@
+body{
+  font-family: arial,sans-serif;
+  background: #FFBF69;
+}
+
 .main-container{
   display: grid;
   grid-template: 150px 1fr / 1fr;
@@ -5,4 +10,116 @@
 
 .topbar-container{
   background: #CBF3F0;
+  display: grid;
+  grid-template: 100px 1fr / 1fr;
+}
+
+.title-container{
+  font-size: 3rem;
+  font-weight: bold;
+  align-self: center;
+  justify-self: center;
+}
+
+.btn-container{
+  justify-content: center;
+}
+
+.content-container{
+  position: relative;
+  display: grid;
+  grid-template: 1fr / 15px, repeat(7, 1fr);
+}
+
+.add-todo-form{
+  border-radius: 30px;
+  padding: 20px;
+  background: #FF9F1C;
+  position: absolute;
+  height: 400px;
+  width: 400px;
+  display: grid;
+  top: 0px;
+  left: 40%;
+  grid-template: 1fr / 1fr;
+  grid-auto-rows: 1fr;
+}
+
+.submit-todo-btn{
+  font-size: 1.5rem;
+  background: #2EC4B6;
+  color: white;
+}
+
+.time-label{
+ font-size: 1.5rem;
+ font-weight: bold;
+ color: #FFFFFF;
+ display: grid;
+ grid-column: 1/2;
+ justify-self: center;
+}
+
+
+.day1-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 2/3;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.day2-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 3/4;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.day3-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 4/5;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.day4-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 5/6;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.day5-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 6/7;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.day6-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 7/8;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.day7-container{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  grid-column: 8/9;
+  display: grid;
+  grid-template: repeat(24, 1fr) / 1fr;
 }
