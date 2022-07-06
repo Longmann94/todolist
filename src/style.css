@@ -11,7 +11,7 @@ body{
 .topbar-container{
   background: #CBF3F0;
   display: grid;
-  grid-template: 100px 1fr / 1fr;
+  grid-template: 75px 75px / 1fr;
 }
 
 .title-container{
@@ -22,7 +22,33 @@ body{
 }
 
 .btn-container{
-  justify-content: center;
+  display: grid;
+  grid-template: 1fr/ 1fr 100px;
+}
+
+.project-container{
+  display: grid;
+  grid-template: 1fr / repeat(5, 1fr);
+  grid-auto-columns: 1fr;
+}
+
+.project-div{
+  background: #2EC4B6;
+  color: white;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 50px;
+  border: 1px solid;
+}
+
+.project-div-name{
+  grid-row: 1 / 3;
+  grid-column: 1 / 2;
+  align-self: center;
+  justify-self: center;
+}
+
+.project-div div{
+
 }
 
 .content-container{
@@ -43,6 +69,13 @@ body{
   left: 40%;
   grid-template: 1fr / 1fr;
   grid-auto-rows: 1fr;
+}
+
+.todo-form-title{
+  font-weight: bold;
+  font-size: 1.5rem;
+  justify-self: center;
+  color: white;
 }
 
 .submit-todo-btn{

@@ -2,7 +2,7 @@ import {format, addDays, parseISO} from 'date-fns';
 
 export default function initialLoad() {
 
-  let timeNow = format(new Date(), 'dd/MM/yy');
+  let timeNow = format(new Date(), 'dd/MM/yy EE');
 
   const element = document.querySelector('#content');
 
@@ -23,6 +23,10 @@ export default function initialLoad() {
   btnAddTodo.textContent = "Add To Do!";
   btnAddTodo.id = 'addTodoBtn';
 
+
+  const projectContainer = document.createElement('div');
+  projectContainer.classList.add('project-container');
+
   const divContent = document.createElement('div');
   divContent.classList.add('content-container');
 
@@ -33,32 +37,36 @@ export default function initialLoad() {
   const day1Container = document.createElement('div');
   day1Container.classList.add('day1-container');
   day1Container.textContent = timeNow;
-  day1Container.id = timeNow;
+  day1Container.id = "t"+format(new Date(), 'ddMMyy');
   const day2Container = document.createElement('div');
   day2Container.classList.add('day2-container');
   day2Container.textContent = format(addDays(new Date(), 1), 'dd/MM/yy EE');
-  day2Container.id = format(addDays(new Date(), 1), 'dd/MM/yy EE');
+  day2Container.id = "t"+format(addDays(new Date(), 1), 'ddMMyy');
   const day3Container = document.createElement('div');
   day3Container.classList.add('day3-container');
   day3Container.textContent = format(addDays(new Date(), 2), 'dd/MM/yy EE');
-  day3Container.id = format(addDays(new Date(), 2), 'dd/MM/yy EE');
+  day3Container.id = "t"+format(addDays(new Date(), 2), 'ddMMyy');
   const day4Container = document.createElement('div');
   day4Container.classList.add('day4-container');
   day4Container.textContent = format(addDays(new Date(), 3), 'dd/MM/yy EE');
-  day4Container.id = format(addDays(new Date(), 3), 'dd/MM/yy EE');
+  day4Container.id = "t"+format(addDays(new Date(), 3), 'ddMMyy');
   const day5Container = document.createElement('div');
   day5Container.classList.add('day5-container');
   day5Container.textContent = format(addDays(new Date(), 4), 'dd/MM/yy EE');
-  day5Container.id = format(addDays(new Date(), 4), 'dd/MM/yy EE');
+  day5Container.id = "t"+format(addDays(new Date(), 4), 'ddMMyy');
   const day6Container = document.createElement('div');
   day6Container.classList.add('day6-container');
   day6Container.textContent = format(addDays(new Date(), 5), 'dd/MM/yy EE');
-  day6Container.id = format(addDays(new Date(), 5), 'dd/MM/yy EE');
+  day6Container.id = "t"+format(addDays(new Date(), 5), 'ddMMyy');
   const day7Container = document.createElement('div');
   day7Container.classList.add('day7-container');
   day7Container.textContent = format(addDays(new Date(), 6), 'dd/MM/yy EE');
-  day7Container.id = format(addDays(new Date(), 6), 'dd/MM/yy EE');
+  day7Container.id = "t"+format(addDays(new Date(), 6), 'ddMMyy');
 
+
+  const todoFormTitle = document.createElement('div');
+  todoFormTitle.classList.add('todo-form-title');
+  todoFormTitle.textContent = "Lets add a to do!";
 
   const newForm = document.createElement('form');
   newForm.classList.add('add-todo-form');
@@ -80,11 +88,11 @@ export default function initialLoad() {
   inputTimestart.id = 'timestart';
   labelTimestart.appendChild(inputTimestart);
 
-  const labelTimeend = document.createElement('label');
-  labelTimeend.textContent = "Time end:";
-  const inputTimeend = document.createElement('input');
-  inputTimeend.id = 'timeend';
-  labelTimeend.appendChild(inputTimeend);
+  const labelPeriod = document.createElement('label');
+  labelPeriod.textContent = "Period:";
+  const inputPeriod = document.createElement('input');
+  inputPeriod.id = 'period';
+  labelPeriod.appendChild(inputPeriod);
 
   const labelType = document.createElement('label');
   labelType.textContent = "Type:";
@@ -98,31 +106,26 @@ export default function initialLoad() {
   inputPrio.id = 'prio';
   labelPrio.appendChild(inputPrio);
 
-  const labelStatus = document.createElement('label');
-  labelStatus.textContent = "Status:";
-  const inputStatus = document.createElement('input');
-  inputStatus.id = 'status';
-  labelStatus.appendChild(inputStatus);
-
   const submitbtn = document.createElement('div');
   submitbtn.classList.add('submit-todo-btn');
   submitbtn.textContent = "ADD TO DO!";
   submitbtn.id = 'submitTodo';
 
   divContent.appendChild(newForm);
+  newForm.appendChild(todoFormTitle);
   newForm.appendChild(labelName);
   newForm.appendChild(labelDetails);
   newForm.appendChild(labelTimestart);
-  newForm.appendChild(labelTimeend);
+  newForm.appendChild(labelPeriod);
   newForm.appendChild(labelType);
   newForm.appendChild(labelPrio);
-  newForm.appendChild(labelStatus);
   newForm.appendChild(submitbtn);
 
 
   element.appendChild(mainContainer);
   mainContainer.appendChild(divTopbar);
   mainContainer.appendChild(divContent);
+  btnContainer.appendChild(projectContainer);
   divTopbar.appendChild(divtitle);
   divTopbar.appendChild(btnContainer);
   btnContainer.appendChild(btnAddTodo);

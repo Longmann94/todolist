@@ -1,6 +1,7 @@
 class Project{
-  constructor(projectArr){
-    this.projectArr = projectArr;
+  constructor(name){
+    this.name = name;
+    this.projectArr = [];
   }
 
   addTodo(todo){
