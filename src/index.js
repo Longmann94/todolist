@@ -20,7 +20,7 @@ const todoForm = document.querySelector('.add-todo-form');
 const submitTodo = document.querySelector('.submitTodo');
 
 //create default project
-const generaltodos = new Project("general to dos");
+const generaltodos = new Project("All to dos");
 projectsArr.push(generaltodos);
 projectsArr.forEach(project => createProject(project));
 projectsArr.forEach(project => project.projectArr.forEach(todo => plotTodo(todo)));
@@ -51,9 +51,11 @@ function deleteProject(e) {
 }
 
 function addProject(){
+    const addprojectInput = document.querySelector('.add-project-div');
     const addproject = document.querySelector('#addProject').value;
 
     if(addproject != '') projectsArr.push(new Project(addproject));
+    document.querySelector("#addProject").value = '';
     updateProject();
 }
 
@@ -87,5 +89,5 @@ function addTodo(e){
 }
 
 submitTodo.addEventListener("click", (e) => addTodo(e));
-addProjectBtn.addEventListener("click", (e) => addProject(e));
+addProjectBtn.addEventListener("click", () => addProject());
 updateEventListeners();

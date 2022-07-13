@@ -34,6 +34,14 @@ export default function initialLoad() {
   const timeLabel = document.createElement('div');
   timeLabel.classList.add('time-label');
   timeLabel.textContent = "Time";
+
+  for(let i = 0; i < 24; i++){
+    const newLabel = document.createElement('div');
+    newLabel.textContent = i+":00";
+    timeLabel.appendChild(newLabel);
+  }
+
+
   const day1Container = document.createElement('div');
   day1Container.classList.add('day1-container');
   day1Container.classList.add('day-container');

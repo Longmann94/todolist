@@ -8,10 +8,11 @@ export default function plotTodo(todo) {
 
   let divID = format(startDate, "ddMMyy");
   let todoHour = format(startDate, "HH");
-  console.log(todoHour);
   let timeSpan = minutesToHours(todo.period);
   let todoStartTime = format(startDate, "h:mm aaa");
   let todoDoneTime = format(add(startDate, {minutes: todo.period}), "h:mm aaa");
+  let timeSlot = Number(todoHour) + 1;
+  console.log(timeSlot);
 
   let todoContainer = document.createElement('div');
   todoContainer.id = todo.title;
@@ -19,11 +20,11 @@ export default function plotTodo(todo) {
   todoContainer.classList.add(`${priority}-prio`);
   let todoTitle = document.createElement('div');
   let todoDetails = document.createElement('div');
-  todoTitle.textContent = todoStartTime + " till " + todoDoneTime + " -  " + todo.title;
+  todoTitle.textContent = todoStartTime + " to " + todoDoneTime + " -  " + todo.title  + " Prio: " + priority ;
   todoDetails.textContent = todo.details;
   todoContainer.appendChild(todoTitle);
   todoContainer.appendChild(todoDetails);
-  todoContainer.style.gridRow = `${todoHour} / span ${timeSpan}`;
+  todoContainer.style.gridRow = `${timeSlot} / span ${timeSpan}`;
   const dateSlot = document.querySelector("#t"+divID);
 
 

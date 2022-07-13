@@ -9,7 +9,7 @@ body{
 }
 
 .topbar-container{
-  background: #CBF3F0;
+  background: #ffaa00;
   display: grid;
   grid-template: 75px 75px / 1fr;
 }
@@ -35,12 +35,13 @@ body{
 }
 
 .project-div{
-  background: #2EC4B6;
+  background: #8338EC;
   color: white;
   display: grid;
   grid-template: 1fr 1fr / 1fr 70px;
   border: 1px solid;
   border-radius: 5px;
+  box-shadow: 2px 5px 5px black;
 }
 
 .project-div-name{
@@ -60,17 +61,18 @@ body{
   position: absolute;
   display: grid;
   grid-template: 1fr / 1fr;
-  top: 0;
+  top: -120px;
   right: 0;
   background: #2EC4B6;
   padding: 10px;
+  border-radius: 5px;
 }
 
 .content-container{
   position: relative;
   display: grid;
   grid-template: 1fr / 15px, repeat(7, 1fr);
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(180deg, #ffd480 15%, #ffed4b 55%, #003399 90%);
 }
 
 .add-todo-form{
@@ -85,6 +87,7 @@ body{
   left: 40%;
   grid-template: 1fr / 1fr;
   grid-auto-rows: 1fr;
+  box-shadow: 5px 5px 15px black;
 }
 
 .todo-form-title{
@@ -98,6 +101,7 @@ body{
   font-size: 1.5rem;
   background: #2EC4B6;
   color: white;
+  text-align: center;
 }
 
 .time-label{
@@ -107,10 +111,8 @@ body{
  display: grid;
  grid-column: 1/2;
  justify-self: center;
-}
-
-.day-container{
- height: 100vh;
+ grid-template: repeat(24, 1fr) / 1fr;
+ padding: 0.5rem;
 }
 
 .day1-container{
@@ -176,26 +178,31 @@ body{
   grid-template: repeat(24, 1fr) / 1fr;
 }
 
+.day-container{
+ height: 100vh;
+ color: black;
+ padding: 0.5rem;
+}
+
 .todo-container{
-  background: #FFBF69;
   display: grid;
   grid-template: 1fr 1fr / 1fr;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .todo-container div{
   padding: 15px;
 }
 
-.High-prio{
+.High-prio div{
   background: #FF006E;
 }
 
-.Medium-prio{
+.Medium-prio div{
   background: #FB5607;
 }
 
-.Low-prio{
+.Low-prio div{
   background: #FFBE0B;
 }
