@@ -1,21 +1,33 @@
 
 export default function createProject(project){
+
+  const addtodobtn = document.querySelector('.submitTodo');
+  const todoForm = document.querySelector('.add-todo-form');
   const name = project.name;
-  let nameId = name.replace(/[ ]/g, '');
 
   const projects = document.querySelector('.project-container');
   const projectContainer = document.createElement('div');
   const projectName = document.createElement('div');
   const projectAddTodoBtn = document.createElement('div');
   const projectDeleteBtn = document.createElement('div');
+  projectDeleteBtn.classList.add('btn-delete-project');
   projectContainer.classList.add('project-div');
   projectName.classList.add('project-div-name');
-  projectContainer.id = 'p'+ nameId;
+  projectContainer.id = name;
   projectName.textContent = name;
   projectAddTodoBtn.textContent = 'Add';
-  projectAddTodoBtn.id = 'add'+ nameId;
+  projectAddTodoBtn.id = name;
   projectDeleteBtn.textContent = 'Delete';
-  projectDeleteBtn.id = 'delete'+ nameId;
+  projectDeleteBtn.id = name;
+
+
+  function addSubmitId(){
+    addtodobtn.id= name;
+    todoForm.style.display = 'grid'
+  }
+
+  projectAddTodoBtn.addEventListener('click', () =>  addSubmitId());
+
 
   projects.appendChild(projectContainer);
   projectContainer.appendChild(projectName);

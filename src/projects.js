@@ -1,4 +1,5 @@
 class Project{
+
   constructor(name){
     this.name = name;
     this.projectArr = [];
@@ -13,7 +14,7 @@ class Project{
   }
 
   displayTodo(){
-    console.log('todo for this project being displayed.');
+    this.projectArr.forEach(todo => console.log(todo));
   }
 }
 

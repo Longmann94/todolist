@@ -1,6 +1,6 @@
 body{
   font-family: arial,sans-serif;
-  background: #FFBF69;
+  margin: auto;
 }
 
 .main-container{
@@ -15,6 +15,7 @@ body{
 }
 
 .title-container{
+  position: relative;
   font-size: 3rem;
   font-weight: bold;
   align-self: center;
@@ -29,6 +30,7 @@ body{
 .project-container{
   display: grid;
   grid-template: 1fr / repeat(5, 1fr);
+  grid-auto-flow: column;
   grid-auto-columns: 1fr;
 }
 
@@ -36,8 +38,9 @@ body{
   background: #2EC4B6;
   color: white;
   display: grid;
-  grid-template: 1fr 1fr / 1fr 50px;
+  grid-template: 1fr 1fr / 1fr 70px;
   border: 1px solid;
+  border-radius: 5px;
 }
 
 .project-div-name{
@@ -48,23 +51,36 @@ body{
 }
 
 .project-div div{
+  padding: 5px;
+  align-self: center;
+  justify-self: center;
+}
 
+.add-project-div{
+  position: absolute;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  top: 0;
+  right: 0;
+  background: #2EC4B6;
+  padding: 10px;
 }
 
 .content-container{
   position: relative;
   display: grid;
   grid-template: 1fr / 15px, repeat(7, 1fr);
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
 }
 
 .add-todo-form{
+  display: none;
   border-radius: 30px;
   padding: 20px;
-  background: #FF9F1C;
+  background: #FFBF69;
   position: absolute;
   height: 400px;
   width: 400px;
-  display: grid;
   top: 0px;
   left: 40%;
   grid-template: 1fr / 1fr;
@@ -93,6 +109,9 @@ body{
  justify-self: center;
 }
 
+.day-container{
+ height: 100vh;
+}
 
 .day1-container{
   font-size: 1.5rem;
@@ -155,4 +174,28 @@ body{
   grid-column: 8/9;
   display: grid;
   grid-template: repeat(24, 1fr) / 1fr;
+}
+
+.todo-container{
+  background: #FFBF69;
+  display: grid;
+  grid-template: 1fr 1fr / 1fr;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.todo-container div{
+  padding: 15px;
+}
+
+.High-prio{
+  background: #FF006E;
+}
+
+.Medium-prio{
+  background: #FB5607;
+}
+
+.Low-prio{
+  background: #FFBE0B;
 }

@@ -1,4 +1,4 @@
-import {format, addDays} from 'date-fns';
+import {format, addDays, parseISO, isAfter, toDate} from 'date-fns';
 import './style.css';
 import Project from './projects.js';
 import Todo from './todos.js';
@@ -6,42 +6,86 @@ import initialLoad from './initialLoad.js';
 import plotTodo from './plotTodo.js';
 import createProject from './createProject.js';
 
+
+let projectsArr = [];
 const element = document.createElement('div');
 element.id = 'content';
 document.body.appendChild(element);
 initialLoad();
 
-let projectsArr = [];
-const generalProject = new Project("general to dos");
-projectsArr.push(generalProject);
-
-projectsArr.forEach(project => createProject(project));
 
 const btnContainer = document.querySelector('.btn-container');
-const addTodoBtn = document.querySelector('#addTodoBtn');
+const addProjectBtn = document.querySelector('#addProjectBtn');
 const todoForm = document.querySelector('.add-todo-form');
-const submitTodo = document.querySelector('#submitTodo');
+const submitTodo = document.querySelector('.submitTodo');
 
-function addTodo(){
+//create default project
+const generaltodos = new Project("general to dos");
+projectsArr.push(generaltodos);
+projectsArr.forEach(project => createProject(project));
+projectsArr.forEach(project => project.projectArr.forEach(todo => plotTodo(todo)));
 
-  const todoTitle = document.querySelector("#todoName").value;
-  const todoDetails = document.querySelector("#details").value;
-  const todoTimeStart = document.querySelector("#timestart").value;
-  const todoPeriod = document.querySelector("#period").value;
-  const todoType = document.querySelector("#type").value;
-  const todoPrio = document.querySelector("#prio").value;
-
-  const newTodo = new Todo(todoTitle, todoDetails, todoTimeStart, todoPeriod, todoType, todoPrio, false);
-  const thisForm = document.querySelector(".add-todo-form");
-  thisForm.style.display = "none";
+function deletetodo(todoname){
+  document.querySelector("#"+todoname).remove();
 }
 
-addTodoBtn.addEventListener('click', () => todoForm.style.display = "grid");
-submitTodo.addEventListener('click', addTodo);
+function updateProject() {
+  const projectContainer = document.querySelector('.project-container');
+  const daysContainer = document.querySelectorAll('.day-container');
+  while(projectContainer.firstChild) projectContainer.removeChild(projectContainer.firstChild);
+  projectsArr.forEach(project => createProject(project));
+  updateEventListeners();
+}
 
-//default project
-let timeNow = format(addDays(new Date(), 0), 'dd/MM/yy');
-let todo1 = new Todo("GO outside", "play with pet outside", timeNow, timeNow, "personal", "low", true);
-generalProject.addTodo(todo1);
-console.log(projectsArr[0].projectArr[0]);
-plotTodo(todo1);
+function updateEventListeners(){
+  let allprojectDeletebtn = document.querySelectorAll('.btn-delete-project');
+  allprojectDeletebtn.forEach(btn => btn.addEventListener("click", (e) => deleteProject(e)));
+}
+
+function deleteProject(e) {
+
+    const projectName = e.target.id;
+    let foundIndex = projectsArr.findIndex((project) => project.name == projectName);
+    projectsArr.splice(foundIndex, 1);
+    updateProject();
+}
+
+function addProject(){
+    const addproject = document.querySelector('#addProject').value;
+
+    if(addproject != '') projectsArr.push(new Project(addproject));
+    updateProject();
+}
+
+function addTodo(e){
+
+  const projectName = String(e.target.id);
+  const todoTitle = document.querySelector("#todoName").value;
+  const todoDetails = document.querySelector("#details").value;
+  const todoDateStart = document.querySelector("#timestart").value;
+  const todoPeriod = document.querySelector("#period").value;
+  const todoPrio = document.querySelector("#prio").value;
+  let parsedDate = parseISO(todoDateStart);
+
+  if(todoDateStart != '' && isAfter(parsedDate, new Date())){
+
+  const newTodo = new Todo(todoTitle, todoDetails, toDate(parsedDate), todoPeriod, todoPrio, false);
+
+  let selectedProject = projectsArr[projectsArr.findIndex((project) => project.name == projectName)];
+
+  console.log(selectedProject);
+  selectedProject.addTodo(newTodo);
+  const thisForm = document.querySelector(".add-todo-form");
+  selectedProject.displayTodo();
+
+  submitTodo.id = "";
+  thisForm.style.display = "none";
+  plotTodo(newTodo);
+}else{
+  window.alert("please check the date, you have to set a date in the future");
+}
+}
+
+submitTodo.addEventListener("click", (e) => addTodo(e));
+addProjectBtn.addEventListener("click", (e) => addProject(e));
+updateEventListeners();
